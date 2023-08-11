@@ -34,9 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         menu.addItem(withTitle: "30 minutos", action: #selector(setTime30), keyEquivalent: "")
         menu.addItem(withTitle: "45 minutos", action: #selector(setTime45), keyEquivalent: "")
         menu.addItem(withTitle: "60 minutos", action: #selector(setTime60), keyEquivalent: "")
-        menu.addItem(withTitle: "120 minutos", action: #selector(decrementTime), keyEquivalent: "")
-        menu.addItem(withTitle: "+5 minutos", action: #selector(incrementTime), keyEquivalent: "")
-        menu.addItem(withTitle: "-5 minutos", action: #selector(decrementTime), keyEquivalent: "")
+        menu.addItem(withTitle: "120 minutos", action: #selector(setTime120), keyEquivalent: "")
+        menu.addItem(withTitle: "+5 minutos", action: #selector(incrementTime5Min), keyEquivalent: "")
+        menu.addItem(withTitle: "-5 minutos", action: #selector(decrementTime5Min), keyEquivalent: "")
         menu.addItem(withTitle: "Reiniciar", action: #selector(resetTimer), keyEquivalent: "")
         menu.addItem(withTitle: "Créditos", action: #selector(showCredits), keyEquivalent: "")
         menu.addItem(withTitle: "Sair", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
@@ -58,41 +58,51 @@ class AppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     @objc func setTime15() {
         countdown = 15 * 60
         updateDisplay()
+        pauseTimer()
+        startTimer()
         beepPlayed = false
     }
     
     @objc func setTime30() {
         countdown = 30 * 60
         updateDisplay()
+        pauseTimer()
+        startTimer()
         beepPlayed = false
     }
     
     @objc func setTime45() {
         countdown = 45 * 60
         updateDisplay()
+        pauseTimer()
+        startTimer()
         beepPlayed = false
     }
     
     @objc func setTime60() {
         countdown = 60 * 60
         updateDisplay()
+        pauseTimer()
+        startTimer()
         beepPlayed = false
     }
     
     @objc func setTime120() {
         countdown = 120 * 60
         updateDisplay()
+        pauseTimer()
+        startTimer()
         beepPlayed = false
     }
     
-    @objc func incrementTime() {
-        countdown += 20 // 5 * 60
+    @objc func incrementTime5Min() {
+        countdown += 5 * 60
         updateDisplay()
         beepPlayed = countdown <= 0
     }
     
-    @objc func decrementTime() {
-        countdown -= 20 // 5 * 60
+    @objc func decrementTime5Min() {
+        countdown -= 5 * 60
         beepPlayed = countdown <= 0
         updateDisplay()
     }
